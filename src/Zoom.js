@@ -15,9 +15,13 @@ let Zoom = props => {
     width: '100%',
     height: '100%'
   };
-  style = Object.assign(this.props.style || {}, style);
+  style = Object.assign(props.style || {}, style);
   return (
-    <div className='zoom-component' style={style}>
+    <div
+      className={`zoom-component ${props.className || ''}`}
+      style={style}
+      id={props.id || null}
+    >
       {props.children || null}
     </div>
   );

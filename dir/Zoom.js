@@ -9,8 +9,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _this = void 0;
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Zoom = function Zoom(props) {
@@ -26,10 +24,11 @@ var Zoom = function Zoom(props) {
     width: '100%',
     height: '100%'
   };
-  style = Object.assign(_this.props.style || {}, style);
+  style = Object.assign(props.style || {}, style);
   return _react.default.createElement("div", {
-    className: "zoom-component",
-    style: style
+    className: "zoom-component ".concat(props.className || ''),
+    style: style,
+    id: props.id || null
   }, props.children || null);
 };
 

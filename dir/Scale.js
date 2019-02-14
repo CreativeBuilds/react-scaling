@@ -84,8 +84,9 @@ function (_React$Component) {
       });
       style.zoom = this.state.zoom + '%';
       return _react.default.createElement("div", {
-        className: "scale-component",
-        style: style
+        className: "scale-component ".concat(this.props.className || ''),
+        style: style,
+        id: this.props.id || null
       }, this.props.children);
     }
   }]);

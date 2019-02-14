@@ -40,7 +40,11 @@ class Scale extends React.Component {
     });
     style.zoom = this.state.zoom + '%';
     return (
-      <div className='scale-component' style={style}>
+      <div
+        className={`scale-component ${this.props.className || ''}`}
+        style={style}
+        id={this.props.id || null}
+      >
         {this.props.children}
       </div>
     );
