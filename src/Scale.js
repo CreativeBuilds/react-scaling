@@ -36,7 +36,6 @@ class Scale extends React.Component {
   render() {
     let style = {};
     style.zoom = this.state.zoom + '%';
-    console.log(style);
     return (
       <div className='scale-component' style={style}>
         {this.props.children}

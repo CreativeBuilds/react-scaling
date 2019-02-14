@@ -80,7 +80,6 @@ function (_React$Component) {
     value: function render() {
       var style = {};
       style.zoom = this.state.zoom + '%';
-      console.log(style);
       return _react.default.createElement("div", {
         className: "scale-component",
         style: style
