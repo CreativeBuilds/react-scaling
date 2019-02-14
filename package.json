@@ -1,0 +1,37 @@
+{
+  "name": "react-scaling",
+  "version": "1.0.1",
+  "description": "Zoom elements to be uniform based on screen size using react elements",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir dir --copy-files",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CreativeBuilds/react-scaling.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "zoom",
+    "html"
+  ],
+  "author": "CreativeBuilds",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CreativeBuilds/react-scaling/issues"
+  },
+  "homepage": "https://github.com/CreativeBuilds/react-scaling#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-preset-minify": "^0.5.0"
+  },
+  "dependencies": {
+    "react": "^16.8.2"
+  }
+}
