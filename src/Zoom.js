@@ -10,8 +10,14 @@ let Zoom = props => {
   if (IF && !isNaN(parseFloat(props.zoom))) {
     zoom = Math.floor(parseInt(zoom)) + '%';
   }
+  let style = {
+    zoom: zoom || '100%',
+    width: '100%',
+    height: '100%'
+  };
+  style = Object.assign(this.props.style || {}, style);
   return (
-    <div className='zoom-component' style={{ zoom: zoom || '100%' }}>
+    <div className='zoom-component' style={style}>
       {props.children || null}
     </div>
   );

@@ -19,11 +19,14 @@ var Zoom = function Zoom(props) {
     zoom = Math.floor(parseInt(zoom)) + '%';
   }
 
+  var style = {
+    zoom: zoom || '100%',
+    width: '100%',
+    height: '100%'
+  };
   return _react.default.createElement("div", {
     className: "zoom-component",
-    style: {
-      zoom: zoom || '100%'
-    }
+    style: style
   }, props.children || null);
 };
 
