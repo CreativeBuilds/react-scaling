@@ -34,10 +34,7 @@ class Scale extends React.Component {
     window.addEventListener('resize', this.rescale);
   };
   render() {
-    let style = Object.assign(this.props.style || {}, {
-      width: '100%',
-      height: '100%'
-    });
+    let style = this.props.style || {};
     style.zoom = this.state.zoom + '%';
     return (
       <div

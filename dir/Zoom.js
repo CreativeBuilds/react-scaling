@@ -20,9 +20,7 @@ var Zoom = function Zoom(props) {
   }
 
   var style = {
-    zoom: zoom || '100%',
-    width: '100%',
-    height: '100%'
+    zoom: zoom || '100%'
   };
   style = Object.assign(props.style || {}, style);
   return _react.default.createElement("div", {

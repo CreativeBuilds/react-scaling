@@ -11,9 +11,7 @@ let Zoom = props => {
     zoom = Math.floor(parseInt(zoom)) + '%';
   }
   let style = {
-    zoom: zoom || '100%',
-    width: '100%',
-    height: '100%'
+    zoom: zoom || '100%'
   };
   style = Object.assign(props.style || {}, style);
   return (
