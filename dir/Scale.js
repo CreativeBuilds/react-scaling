@@ -78,10 +78,10 @@ function (_React$Component) {
   _createClass(Scale, [{
     key: "render",
     value: function render() {
-      var style = {
+      var style = Object.assign(this.props.style || {}, {
         width: '100%',
         height: '100%'
-      };
+      });
       style.zoom = this.state.zoom + '%';
       return _react.default.createElement("div", {
         className: "scale-component",
