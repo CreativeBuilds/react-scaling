@@ -1,6 +1,6 @@
 {
   "name": "react-scaling",
-  "version": "1.0.61",
+  "version": "1.0.7",
   "description": "Zoom elements to be uniform based on screen size using react elements",
   "main": "index.js",
   "scripts": {
