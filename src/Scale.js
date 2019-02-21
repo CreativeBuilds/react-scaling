@@ -6,11 +6,38 @@ import Zoom from './Zoom';
 class Scale extends React.Component {
   constructor(props) {
     super(props);
+    let zoom;
+    let mobile = false;
+    let tablet = false;
+    let desktop = false;
+    let width = window.innerWidth;
+    this.findZoom = () => {
+      if (width >= 1025) desktop = true;
+      if (width <= 1024 && width >= 481) tablet = true;
+      if (width <= 480) mobile = true;
+      if (desktop && this.props.desktopZoomTo) {
+        return this.props.desktopZoomTo
+          ? Math.floor((window.innerWidth / this.props.desktopZoomTo) * 100)
+          : 100;
+      }
+      if (tablet && this.props.tabletZoomTo) {
+        return this.props.tabletZoomTo
+          ? Math.floor((window.innerWidth / this.props.tabletZoomTo) * 100)
+          : 100;
+      }
+      if (mobile && this.props.mobileZoomTo) {
+        return this.props.mobileZoomTo
+          ? Math.floor((window.innerWidth / this.props.mobileZoomTo) * 100)
+          : 100;
+      }
+      return this.props.scaleTo
+        ? Math.floor((window.innerWidth / props.scaleTo) * 100)
+        : 100;
+    };
+    zoom = this.findZoom();
     this.state = {
       width: 0,
-      zoom: this.props.scaleTo
-        ? Math.floor((window.innerWidth / props.scaleTo) * 100)
-        : 100
+      zoom
     };
   }
 
@@ -19,11 +46,7 @@ class Scale extends React.Component {
       let newState = { ...currentState };
       newState.width = window.innerWidth;
       newState.height = window.innerHeight;
-      if (this.props.scaleTo) {
-        newState.zoom = Math.floor(
-          (window.innerWidth / this.props.scaleTo) * 100
-        );
-      }
+      newState.zoom = this.findZoom();
       return newState;
     });
   };

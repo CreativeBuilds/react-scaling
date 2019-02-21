@@ -51,11 +51,7 @@ function (_React$Component) {
 
         newState.width = window.innerWidth;
         newState.height = window.innerHeight;
-
-        if (_this.props.scaleTo) {
-          newState.zoom = Math.floor(window.innerWidth / _this.props.scaleTo * 100);
-        }
-
+        newState.zoom = _this.findZoom();
         return newState;
       });
     });
@@ -68,9 +64,36 @@ function (_React$Component) {
       window.addEventListener('resize', _this.rescale);
     });
 
+    var zoom;
+    var mobile = false;
+    var tablet = false;
+    var desktop = false;
+    var width = window.innerWidth;
+
+    _this.findZoom = function () {
+      if (width >= 1025) desktop = true;
+      if (width <= 1024 && width >= 481) tablet = true;
+      if (width <= 480) mobile = true;
+
+      if (desktop && _this.props.desktopZoomTo) {
+        return _this.props.desktopZoomTo ? Math.floor(window.innerWidth / _this.props.desktopZoomTo * 100) : 100;
+      }
+
+      if (tablet && _this.props.tabletZoomTo) {
+        return _this.props.tabletZoomTo ? Math.floor(window.innerWidth / _this.props.tabletZoomTo * 100) : 100;
+      }
+
+      if (mobile && _this.props.mobileZoomTo) {
+        return _this.props.mobileZoomTo ? Math.floor(window.innerWidth / _this.props.mobileZoomTo * 100) : 100;
+      }
+
+      return _this.props.scaleTo ? Math.floor(window.innerWidth / props.scaleTo * 100) : 100;
+    };
+
+    zoom = _this.findZoom();
     _this.state = {
       width: 0,
-      zoom: _this.props.scaleTo ? Math.floor(window.innerWidth / props.scaleTo * 100) : 100
+      zoom: zoom
     };
     return _this;
   }
