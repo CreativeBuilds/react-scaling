@@ -71,20 +71,24 @@ function (_React$Component) {
     var width = window.innerWidth;
 
     _this.findZoom = function () {
+      width = window.innerWidth;
+      mobile = false;
+      tablet = false;
+      desktop = false;
       if (width >= 1025) desktop = true;
       if (width <= 1024 && width >= 481) tablet = true;
       if (width <= 480) mobile = true;
 
-      if (desktop && _this.props.desktopZoomTo) {
-        return _this.props.desktopZoomTo ? Math.floor(window.innerWidth / _this.props.desktopZoomTo * 100) : 100;
+      if (desktop && !isNaN(_this.props.desktopScaleTo)) {
+        return _this.props.desktopScaleTo ? Math.floor(window.innerWidth / _this.props.desktopScaleTo * 100) : 100;
       }
 
-      if (tablet && _this.props.tabletZoomTo) {
-        return _this.props.tabletZoomTo ? Math.floor(window.innerWidth / _this.props.tabletZoomTo * 100) : 100;
+      if (tablet && !isNaN(_this.props.tabletScaleTo)) {
+        return _this.props.tabletScaleTo ? Math.floor(window.innerWidth / _this.props.tabletScaleTo * 100) : 100;
       }
 
-      if (mobile && _this.props.mobileZoomTo) {
-        return _this.props.mobileZoomTo ? Math.floor(window.innerWidth / _this.props.mobileZoomTo * 100) : 100;
+      if (mobile && !isNaN(_this.props.mobileScaleTo)) {
+        return _this.props.mobileScaleTo ? Math.floor(window.innerWidth / _this.props.mobileScaleTo * 100) : 100;
       }
 
       return _this.props.scaleTo ? Math.floor(window.innerWidth / props.scaleTo * 100) : 100;
@@ -102,7 +106,8 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var style = this.props.style || {};
-      style.zoom = this.state.zoom + '%';
+      style.zoom = (this.state ? this.state.zoom : 100) + '%';
+      console.log('MY ZOOM', style.zoom);
       return _react.default.createElement("div", {
         className: "scale-component ".concat(this.props.className || ''),
         style: style,
