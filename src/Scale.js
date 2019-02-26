@@ -61,9 +61,8 @@ class Scale extends React.Component {
     window.addEventListener('resize', this.rescale);
   };
   render() {
-    let style = this.props.style || {};
+    let style = Object.assign({}, this.props.style || {});
     style.zoom = (this.state ? this.state.zoom : 100) + '%';
-    console.log('MY ZOOM', style.zoom);
     return (
       <div
         className={`scale-component ${this.props.className || ''}`}

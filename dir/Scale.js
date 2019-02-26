@@ -105,9 +105,8 @@ function (_React$Component) {
   _createClass(Scale, [{
     key: "render",
     value: function render() {
-      var style = this.props.style || {};
+      var style = Object.assign({}, this.props.style || {});
       style.zoom = (this.state ? this.state.zoom : 100) + '%';
-      console.log('MY ZOOM', style.zoom);
       return _react.default.createElement("div", {
         className: "scale-component ".concat(this.props.className || ''),
         style: style,
